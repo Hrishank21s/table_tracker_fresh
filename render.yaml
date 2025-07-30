@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: table_tracker_fresh
+    env: node
+    plan: free
+    buildCommand: npm install && cd client && npm install && cd .. && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        value: admin123
+
+databases:
+  - name: table-tracker-db
+    plan: free
